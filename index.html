@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body >
+<h3>Unesite duzinu stranice kocke:</h3>
+	
+    <h3>Kocka 1:</h3>
+		<input id="str1" type="text" ><br>
+	<div id="rez1"></div><br>
+	
+	<h3>Kocka 2:</h3>
+		<input id="str2" type="text" ><br>
+	<div id="rez2"></div><br>
+		<button id="klik">Izracunaj</button>
+	
+</body>
+</html>
+
+<script>
+function Kocka(a){
+	this._a = a ? a : 0;
+	this.setStr = function(str){
+		this._a = str;
+	};
+    
+	this.Zapremina = function(){
+		v = this._a * this._a * this._a;
+		return v;
+	};
+	this.Obim = function(){
+		o = this._a * 12;
+		return o;
+	};
+}
+	
+function rez(kocka, id){
+	document.getElementById(id).innerHTML= '<p>Zapremina: '+kocka.Zapremina()+'</p>' +
+		'<p>Obim: '+kocka.Obim()+'</p>';
+}	
+var kocka1 = new Kocka();
+var kocka2 = new Kocka();
+	
+var klik = document.getElementById('klik');
+	klik.onclick = function(){
+		kocka1.setStr(document.getElementById('str1').value);
+		kocka2.setStr(document.getElementById('str2').value);
+		
+		rez(kocka1,'rez1');
+		rez(kocka2,'rez2');
+	};
+
+</script>
